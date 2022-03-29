@@ -9,11 +9,11 @@
 
 </head>
 <body>
-  <a href="../php/add.php">add.php</a>
+  <a href="add.php">add.php</a>
   <br>
-  <a href="../php/connection.php">connection.php</a>
+  <a href="connection.php">connection.php</a>
   <br>
-  <a href="../php/listing.php">listing.php</a>
+  <a href="listing.php">listing.php</a>
   <br>
 
 </body>
