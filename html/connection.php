@@ -23,7 +23,9 @@ if (isset($_POST['username'])){
     $query->bindValue(':username', $username, PDO::PARAM_STR); // On va remplacer le paramètre ":username" à la variable $username dans la commande SQL.
 
     $res = $query->execute(); // Exécution de la commande SQL.
+
     $res = $query->fetch(); // Va chercher la prochaine ligne de commande.
+
     $rows = $query->rowCount(); // Vérifie qu'il n'y ait qu'une seule ligne qui a été renvoyé par la query. S'il y a aucun utilisateur, on va réaliser des actions différentes.
 
     if($rows==1){
