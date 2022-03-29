@@ -1,9 +1,10 @@
-<?
-	phprequire_once('connect.php');
+<?php
+	require_once('connect.php');
 	$sql = 'SELECT * FROM `Shoes`';
 	$query = $db->prepare($sql);
 	$query->execute();
-	$result = $query->fetchAll(PDO::FETCH_ASSOC);require_once('close.php');
+	$result = $query->fetchAll(PDO::FETCH_ASSOC);
+	require_once('close.php');
 ?>
 
 <html>
@@ -21,7 +22,7 @@
 
 <table class="table">
 
-<?phpforeach($result as $produit){?>
+<?php foreach($result as $produit){?>
 <tr>
 	<td><?= $produit['shoes_id'] ?></td>
 	<td><?= $produit['brand'] ?></td>
