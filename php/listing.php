@@ -1,6 +1,6 @@
 <?
 phprequire_once('connect.php');
-$sql = 'SELECT * FROM `liste`';
+$sql = 'SELECT * FROM `Shoes`';
 $query = $db->prepare($sql);
 $query->execute();
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
