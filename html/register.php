@@ -25,13 +25,13 @@ if (isset($_REQUEST['username'], $_REQUEST['email'], $_REQUEST['password'])){
     // Exécute la query une fois qu'on a tout lié.
     $res = $query->execute();
 
-
+	echo($res);
     if($res){
         // Dans le cas où l'inscription s'est bien passé, on affiche un message.
-
+	echo ("bonjour");
         echo "<div class='sucess'>
              <h3>Vous êtes inscrit avec succès.</h3>
-             <p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
+             <p>Cliquez ici pour vous <a href='connection.php'>connecter</a></p>
         </div>";
 
     }
@@ -52,7 +52,7 @@ if (isset($_REQUEST['username'], $_REQUEST['email'], $_REQUEST['password'])){
     <input type="password" class="box-input" name="password" placeholder="Mot de passe" required />
     <input type="submit" name="submit" value="S'inscrire" class="box-button" />
 
-    <p class="box-register">Déjà inscrit? <a href="login.php">Connectez-vous ici</a></p>
+    <p class="box-register">Déjà inscrit? <a href="connection.php">Connectez-vous ici</a></p>
 
 </form>
 
