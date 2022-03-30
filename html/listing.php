@@ -29,12 +29,9 @@
 	<td><?= $produit['name'] ?></td>
 	<td><?= $produit['size'] ?></td>
     <td><?php
-        $image = $produit['photo1'];
-        ob_start();
-        imagejpeg($image, null, 80);
-        $data = ob_get_contents();
-        ob_end_clean();
-        echo '<img src="data:image/jpg;base64,' .  base64_encode($data)  . '" />';
+        $image = new Imagick();
+        $image->readimageblob($produit['photo1']);
+        echo '<img src="data:image/png;base64,' .  base64_encode($image->getimageblob())  . '" />';
         ?>
     </td>
 	<td><a href="details.php?id=<?= $produit['id'] ?>">Voir</a>
