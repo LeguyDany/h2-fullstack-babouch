@@ -1,2 +1,5 @@
 
-
+section#photo_sneakers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
