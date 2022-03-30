@@ -27,7 +27,8 @@
 	<td><?= $produit['shoes_id'] ?></td>
 	<td><?= $produit['brand'] ?></td>
 	<td><?= $produit['name'] ?></td>
-	<td><?= $produit['size'] ?></td>
+    <td><?= $produit['price'] ?></td>
+    <td><?= $produit['SKU_code'] ?></td>
     <td><?php
         $image = new Imagick();
         $image->readimageblob($produit['photo1']);
