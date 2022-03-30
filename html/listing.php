@@ -33,6 +33,6 @@
 	<td><a href="delete.php?id=<?= $produit['id'] ?>">Supprimer</a>
 </tr>
 
-<?php}?>
+<?php }?>
 
 </table></div></body></html>
