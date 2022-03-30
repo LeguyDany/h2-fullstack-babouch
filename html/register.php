@@ -13,12 +13,12 @@ if (isset($_REQUEST['username'], $_REQUEST['password'])){
     $password = password_hash(stripslashes($_REQUEST['password']), PASSWORD_DEFAULT);
 
     // Réalisation d'une insertion en SQL pour pouvoir insérer les nouvelles données dans la base de données.
-    $sql = "INSERT INTO User_account(username, password) VALUES(:username, :password);";
+    $sql = "INSERT INTO `User_account` (`username`, `password`) VALUES(:username, :password);";
 
     $query = $db->prepare($sql); // Prépare l'exécution d'une commande SQL.
     // bindValue : Permet de lier une valeur à un paramètre. Entre autre, ici, on va chercher à remplacer les valeurs de la ligne 17 avec des paramètres.
-    $query->bindValue('username', $username, PDO::PARAM_STR); // Permet de lire les données SQL en string.
-    $query->bindValue('password', $password, PDO::PARAM_STR);
+    $query->bindValue(':username', $username); // Permet de lire les données SQL en string.
+    $query->bindValue(':password', $password);
     var_dump($query);
     echo('<br>');
     // Exécute la query une fois qu'on a tout lié.
