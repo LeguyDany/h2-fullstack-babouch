@@ -28,6 +28,15 @@
 	<td><?= $produit['brand'] ?></td>
 	<td><?= $produit['name'] ?></td>
 	<td><?= $produit['size'] ?></td>
+    <td><?php
+        $image = $produit['photo1'];
+        ob_start();
+        imagejpeg($image, null, 80);
+        $data = ob_get_contents();
+        ob_end_clean();
+        echo '<img src="data:image/jpg;base64,' .  base64_encode($data)  . '" />';
+        ?>
+    </td>
 	<td><a href="details.php?id=<?= $produit['id'] ?>">Voir</a>
 	<td><a href="edit.php?id=<?= $produit['id'] ?>">Modifier</a>
 	<td><a href="delete.php?id=<?= $produit['id'] ?>">Supprimer</a>
