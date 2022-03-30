@@ -30,7 +30,13 @@
     <td><?= $produit['price'] ?></td>
     <td><?= $produit['SKU_code'] ?></td>
     <td><?php
+<<<<<<< HEAD
         print $produit['photo1'];
+=======
+        $image = new Gmagick();
+        $image->readimageblob($produit['photo1']);
+        echo '<img src="data:image/png;base64,' .  base64_encode($image->getimageblob())  . '" />';
+>>>>>>> 1ac329a (1)
         ?>
     </td>
 	<td><a href="details.php?id=<?= $produit['id'] ?>">Voir</a>
