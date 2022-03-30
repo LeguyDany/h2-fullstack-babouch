@@ -1,0 +1,117 @@
+
+/* ========== Le fond ========== */
+main > section {
+    margin: 85px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+/* ========== Le texte ========== */
+    @font-face {
+        font-family: "MonumentExtended-Regular";
+        src: local("../assets/font/MonumentExtended-FreeForPersonalUse/MonumentExtended-Regular.otf");
+        format("woff");
+    }
+    @font-face {
+        font-family: "DXRigraf-SemiBold";
+        src: local("../assets/font/DX-Rigraf-Free/DXRigraf-SemiBold.otf");
+        format("woff");
+    }
+    @font-face {
+        font-family: "DXRigraf-Regular";
+        src: local("../assets/font/DX-Rigraf-Free/DXRigraf-Regular.otf");
+        format("woff");
+    }
+    /*Les balises H */
+    main > section > div > h1 {
+        font-family: MonumentExtended-Regular, sans-serif;
+        font-size: 40px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 100%;
+        color: #8F8F8F;
+        margin: 10px;
+    }
+    main > section > div > h2 {
+        font-family: MonumentExtended-Regular, sans-serif;
+        font-size: 30px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 100%;
+        color: #1F1F1F;
+        margin: 10px;
+    }
+    main > section > div > h3 {
+        font-family: MonumentExtended-Regular, sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 100%;
+    }
+    main > section > div > h4 {
+        font-family: MonumentExtended-Regular, sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 100%;
+        margin: 10px;
+    }
+    h5 {
+        font-family: DXRigraf-SemiBold, sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+        font-style: normal;
+        line-height: 120%;
+    }
+    h6 {
+        font-family: DXRigraf-SemiBold, sans-serif;
+        font-size: 21px;
+        font-weight: 600;
+        font-style: normal;
+        line-height: 120%;
+    }
+    p {
+        font-family: DXRigraf-Regular, sans-serif;
+        font-size: 24px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 120%;
+    }
+    /*Ligne orange*/
+    main > section > div > hr {
+        border: 2px solid #FFBF37;
+        width: 100%;
+        height: 0px;
+        margin: 0px;
+    }
+/* ========== Côté gauche (les images) ========== */
+    /*Grande image*/
+    div#photo_sneakers1 {
+        display: grid;
+        grid-template-rows: 4fr 1fr;
+        justify-content: center;
+        padding: 40px;
+        justify-items: stretch;
+        align-items: center;
+    }
+    img#photo_1 {
+        height: auto;
+        width: auto;
+    }
+    /*Petites image*/
+    div#photo_sneakers2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-content: center;
+    }
+    img#photo_2 {
+        height: 131px;
+        width: 214px;
+    }
+    img#photo_3 {
+        height: 131px;
+        width: 214px;
+    }
+    img#photo_4 {
+        height: 131px;
+        width: 214px;
+    }
