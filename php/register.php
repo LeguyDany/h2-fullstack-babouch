@@ -12,18 +12,19 @@ if (isset($_REQUEST['username'], $_REQUEST['password'])){
     $username = stripslashes($_REQUEST['username']);
     $password = password_hash(stripslashes($_REQUEST['password']), PASSWORD_DEFAULT);
 
+    var_dump($username);
+    echo($username);
+
     // Réalisation d'une insertion en SQL pour pouvoir insérer les nouvelles données dans la base de données.
-    $sql = "INSERT INTO `User_account` (`username`, `password`) VALUES(:username, :password);";
+    $sql = "INSERT INTO `User_account` (`username`, `password`) VALUES (:username, :password);";
 
     $query = $db->prepare($sql); // Prépare l'exécution d'une commande SQL.
     // bindValue : Permet de lier une valeur à un paramètre. Entre autre, ici, on va chercher à remplacer les valeurs de la ligne 17 avec des paramètres.
-    $query->bindValue(':username', $username); // Permet de lire les données SQL en string.
-    $query->bindValue(':password', $password);
-    var_dump($query);
-    echo('<br>');
+    $query->bindValue(':username', $username, PDO::PARAM_STR); // Permet de lire les données SQL en string.
+    $query->bindValue(':password', $password, PDO::PARAM_STR);
     // Exécute la query une fois qu'on a tout lié.
-    $res = $query->execute();
-    var_dump($res);
+
+   $res = $query->execute();
 
     if($res){
         // Dans le cas où l'inscription s'est bien passé, on affiche un message.
@@ -31,8 +32,7 @@ if (isset($_REQUEST['username'], $_REQUEST['password'])){
         echo "<div class='sucess'>
              <h3>Vous êtes inscrit avec succès.</h3>
              <p>Cliquez ici pour vous <a href='connection.php'>connecter</a></p>
-        </div>";
-
+        </div>";    
     }
 
 }else{
