@@ -33,9 +33,9 @@
         echo '<img src="data:image/jpeg;base64,'.base64_encode($produit['photo1']).'" height="100" width="100"/>';
         ?>
     </td>
-	<td><a href="details.php?id=<?= $produit['id'] ?>">Voir</a>
-	<td><a href="edit.php?id=<?= $produit['id'] ?>">Modifier</a>
-	<td><a href="delete.php?id=<?= $produit['id'] ?>">Supprimer</a>
+	<td><a href="details.php?id=<?= $produit['shoes_id'] ?>">Voir</a>
+	<td><a href="edit.php?id=<?= $produit['shoes_id'] ?>">Modifier</a>
+	<td><a href="delete.php?id=<?= $produit['shoes_id'] ?>">Supprimer</a>
 </tr>
 
 <?php }?>
