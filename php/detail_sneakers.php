@@ -25,10 +25,21 @@
 
 <!--        Le côté droit de la page (le texte)-->
         <div>
-            <h1>Nike</h1>
-            <h2>Dunk Low Team Red</h2>
+            <h1 id="Nike">Nike</h1>
+            <h2 id="Dunk">Dunk Low Team Red</h2>
             <hr>
-            <h4>270.00€</h4>
+            <h4 id="euro">270.00€</h4>
+            <h4 id="taille">TAILLE</h4>
+            <div id="taille">
+                <h3>37.5</h3>
+                <h3>38</h3>
+                <h3>39</h3>
+                <h3 id="barre">40.5</h3>
+                <h3>42</h3>
+            </div>
+            <div id="Ajouter">
+                <h3>Ajouter au panier</h3>
+            </div>
         </div>
 
     </section>
