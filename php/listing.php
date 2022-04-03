@@ -1,8 +1,29 @@
 <?php
 	require_once('connect.php');
 
+	// Place le compteur de page à 1 lorsqu'on arrive pour la sur la page.
+	if(empty($_GET['current_num_page'])){
+		$_GET['current_num_page'] = 1;
+	}
+	
+	function num_page_total($all_products){
+		// Compte le nombre total de page qu'il y aura à afficher en fonction du nombre de paires rentrées.
+
+		$all_products_size = count($all_products);
+		if($all_products_size%10 == 0){
+			$page_total = floor( $all_products_size / 10);
+
+		}else{
+			$page_total = floor( $all_products_size / 10 + 1);
+		}
+
+		return $page_total;
+	}
+
+	// Query de la barre de recherche. Change le contenu de la query en fonction de ce qu'on entre dans la page.
 	if(isset($_POST['search']) && !empty($_POST['search'])){
 		$search = strip_tags($_POST['search']);
+		$_GET['current_num_page'] = 1;
 		$sql = "SELECT * FROM `Shoes` WHERE `name` LIKE :search OR `brand` LIKE :search;";
 
 		$query = $db->prepare($sql);
@@ -10,12 +31,53 @@
 		$query->bindValue(':search', '%'.$search.'%', PDO::PARAM_STR);
 		$query->execute();
 		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+		$total_shoes = count($result);
+
+		$page_total = num_page_total($result);
+
+	// Query s'il n'y a pas de recherche effectué avec la barre de recherche.  Affiche toute la base de données pour les chaussures.
 	}else{
 		$sql = 'SELECT * FROM `Shoes`';
 		$query = $db->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+		$total_shoes = count($result);
+
+		$page_total = num_page_total($result);
 	}
+
+	// Compte le nombre de produits qu'il y a à afficher au total.
+	if(isset($result)){
+		$result_size = count($result);
+	}
+
+	// On va chercher à mettre en place une numérotation de page et à seulement afficher 10 éléments par page en fonction d'où on se situe dans la numérotation de page.
+	if(isset($_GET['current_num_page']) && !empty($_GET['current_num_page']) && empty($_POST['search'])){
+
+		$offset = 10 * $_GET['current_num_page'] - 10;
+
+		// ==== Numérotation de page avec des mots clés entrés dans la barre de recherche. ==== //
+		//if(isset($search) && !empty($search)){
+
+		//	echo $search;
+		//	$sql = "SELECT * FROM `Shoes` WHERE `name` LIKE :search OR `brand` LIKE :search LIMIT 10 OFFSET $offset;";
+
+		//	$query = $db->prepare($sql);
+
+		//	$query->bindValue(':search', '%'.$search.'%', PDO::PARAM_STR);
+		//	$query->execute();
+		//	$result = $query->fetchAll(PDO::FETCH_ASSOC);
+		//}else{
+		
+		// ==== Numérotation de page dans le cas où rien est entré dans la barre de recherche. ==== //
+		$sql = "SELECT * FROM `Shoes` limit 10 OFFSET $offset;";
+		$query = $db->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+	}
+		
 	require_once('close.php');
 ?>
 
@@ -44,9 +106,13 @@
 		<button>Chercher</button>
 	</form>
 	
-	<p>Résultat des recherches : <b> <?=count($result);?> paire(s)</b> dans la page.</p>
+	<p>Résultat des recherches : <b> <?=$total_shoes;?> paire(s)</b> en tout.</p>
 
-
+	<!-- Affiche sur quelle page on se trouve dans la numérotation de page.  -->
+	<?php 
+	if($page_total - 1 > 0 && empty($_POST['search'])){ ?>
+		<p>Page : <b><?=$_GET['current_num_page'];?> / <?=$page_total; ?></b></p>
+	<?php } ?>
 
 	<!-- Contenu du tableau pour les chaussures.  -->
 	<div class="card-body">
@@ -63,7 +129,7 @@
 					<th>Marque</th>
 					<th>Nom du Produit</th>
 					<th>Prix</th>
-					<th>SKU</th>
+					<th>Quantité disponible</th>
 					<th>Image</th>
 					<th style="width: 20%;">Actions</th>
 				</tr>
@@ -75,7 +141,7 @@
 					<td><?= $produit['brand'] ?></td>
 					<td><?= $produit['name'] ?></td>
 					<td><?= number_format($produit['price']) ?>€</td>
-					<td><?= $produit['SKU_code'] ?></td>
+					<td><?= $produit['n_available'] ?></td>
 					<td><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($produit['photo1']).'" height="100" />';?></td>
 					<td>
 						<a href="details.php?id=<?=$produit['shoes_id']?>" class="btn btn-sm btn-light"><i class="fa fa-th-list"></i></a>
@@ -92,41 +158,12 @@
 	<?php
 	// On va compter le nombre de page qu'il y a en fonction du nombre de paires de chaussure.
 
-
-		if(isset($result)){
-			$result_size = count($result);
-
-			if($result_size%10 == 0){
-				$page_total = floor( $result_size / 10);
-
-			}else{
-				$page_total = floor( $result_size / 10 + 1);
-			}
-
-		}
-
-		
-
+	if($page_total - 1 > 0 && empty($_POST['search'])){
 		for($i = 1; $i<= $page_total; $i++ ){
-			echo "<a href='listing.php?current_num_page=".$i."'>".$i."</a>" ;
+			echo "<a href='listing.php?current_num_page=".$i."'>".$i." </a>" ;
 		}
+	}
 
-		if(isset $_GET['current_num_page'] && !empty($_GET['current_num_page'])){
-			$offset = $page_total * $_GET['current_num_page'];
-			
-			$search = strip_tags($_POST['search']);
-			$sql = "SELECT * FROM `Shoes` WHERE `name` LIKE :search OR `brand` LIKE :search LIMIT 10 OFFSET ;";
-
-			$query = $db->prepare($sql);
-
-			$query->bindValue(':search', '%'.$search.'%', PDO::PARAM_STR);
-			$query->execute();
-			$result = $query->fetchAll(PDO::FETCH_ASSOC);
-		}
-		
-
-	
-		
 	?>
 
 	

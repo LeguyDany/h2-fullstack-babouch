@@ -80,6 +80,16 @@
 		color: #FFF;
 		}
 
+		input{
+		margin-bottom: 20px;
+		width: 300px;
+		}
+
+		textarea{
+		width:50vw;
+		height: 10em;
+		}
+
 	</style>
 
 	<a href="listing.php">Retour</a>
@@ -104,12 +114,16 @@
 		<input type="number" name="price" id="price">
 		<br>
 
-		<label for="desc">Description</label>
-		<input type="text" name="desc" id="desc">
-		<br>
-
 		<label for="n_available">Quantité disponible</label>
 		<input type="number" name="n_available" id="n_available">
+		<br>
+
+		<label for="SKU_code">Code SKU</label>
+		<input type="text" name="SKU_code" id="SKU_code">
+		<br>
+
+		<label for="desc">Description</label>
+		<input type="text" name="desc" id="desc">
 		<br>
 
 		<label for="photo1">Photo 1</label>
@@ -122,10 +136,6 @@
 
 		<label for="photo3">Photo 3</label>
 		<input type="file" name="photo3" id="photo3">
-		<br>
-
-		<label for="SKU_code">Code SKU</label>
-		<input type="text" name="SKU_code" id="SKU_code">
 		<br>
 
 		<button>Ajouter</button>

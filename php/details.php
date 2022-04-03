@@ -9,30 +9,7 @@ $query->bindValue('shoes_id', $id, PDO::PARAM_INT);
 $query->execute();$produit = $query->fetch();
 require_once('close.php');}
 
-
-
-
-$id = $_GET[`shoes_id`] ? intval($_GET[`shoes_id`]) :0;
-try {
-	$sql ="SELECT * FROM `Shoes` WHERE shoes_id = :shoes_id LIMIT 1";
-	$stmt = $conn->prepare($sql);
-	$stmt->bindParam(":shoes_id" , $id, PDO::PARAM_INT);
-	$stmt->execute();
-}catch (PDOException $e) {
-	echo "Erreur " . $e->getMessage();
-	exit();
-}
-if (!$stmt->rowCount()) {
-	header("Location: listing.php");
-	exit();
-}
-$produit = stmt->fetch();
-
 ?>
-
-
-
-
 
 
 
@@ -80,28 +57,6 @@ $produit = stmt->fetch();
 				<div class="col-3">
 					<img src="<?= $produit['photo1'] ?>" alt="<?=$produit['name']?> <?=$produit['brand']?>"  class="img-fluid img-thumbnail">
 				</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
