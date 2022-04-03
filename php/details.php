@@ -1,14 +1,40 @@
-<?phprequire_once('connect.php');
+<?php
+require_once('connect.php');
 
-if(isset($_GET['id']) && !empty($_GET['id'])){
-$id = strip_tags($_GET['id']);
-$sql = 'SELECT * FROM `liste` WHERE `id`=:id';
+if(isset($_GET['shoes_id']) && !empty($_GET['shoes_id'])){
+$id = strip_tags($_GET['shoes_id']);
+$sql = 'SELECT * FROM `Shoes` WHERE `shoes_id`=:shoes_id';
 $query = $db->prepare($sql);
-$query->bindValue(':id', $id, PDO::PARAM_INT);
+$query->bindValue('shoes_id', $id, PDO::PARAM_INT);
 $query->execute();$produit = $query->fetch();
 require_once('close.php');}
 
+
+
+
+$id = $_GET[`shoes_id`] ? intval($_GET[`shoes_id`]) :0;
+try {
+	$sql ="SELECT * FROM `Shoes` WHERE shoes_id = :shoes_id LIMIT 1";
+	$stmt = $conn->prepare($sql);
+	$stmt->bindParam(":shoes_id" , $id, PDO::PARAM_INT);
+	$stmt->execute();
+}catch (PDOException $e) {
+	echo "Erreur " . $e->getMessage();
+	exit();
+}
+if (!$stmt->rowCount()) {
+	header("Location: listing.php");
+	exit();
+}
+$produit = stmt->fetch();
+
 ?>
+
+
+
+
+
+
 
 <html>
 <head><title>Listing Simple</title>
@@ -20,20 +46,65 @@ require_once('close.php');}
 
 <body>
 
-<div class="container">
+	<div class="container">
+		<div class="card border-primary">
+			<div class="card-header bg-primary text-white">
+				<strong><i class="fa fa-database"></i> Détails du Produit</strong>
+			</div>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-9">
+					<table class="table table-bordered table-striped">
+						<tr>
+							<th>ID</th>
+							<td><><?= $produit['shoes_id']?><//td>
+							<th>SKU</th>
+							<td><><?= $produit['SKU_code']?><//td>
+						</tr>
+						<tr>
+							<th>Quantité</th>
+							<td><><?= $produit['n_available']?><//td>
+							<th>Tailles</th>
+							<td><><?= $produit['size']?><//td>
+						</tr>
+						<tr>
+							<th>Prix</th>
+							<td><><?= number_format($produit['price'], 2)?></td>
+							<th>Description</td>
+							<td><?= $produit['desc']?></td>
+						</tr>
 
-<h1>Exemple de CRUD Page Detail</h1>
+					</table>
+				</div>
+				<div class="col-3">
+					<img src="<?= $produit['photo1'] ?>" alt="<?=$produit['name']?> <?=$produit['brand']?>"  class="img-fluid img-thumbnail">
+				</div>
 
-<table class="table">
 
-<tr>
-	<td><?= $produit['id'] ?></td>
-	<td><?= $produit['produit'] ?></td>
-	<td><?= $produit['prix'] ?></td>
-	<td><?= $produit['nombre'] ?></td>
-</tr>
 
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <a href="listing.php">Retour</a>
 

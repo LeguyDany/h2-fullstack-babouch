@@ -14,7 +14,6 @@
 		&& isset($_FILES['photo2']) && !empty($_FILES['photo2'])
 		&& isset($_FILES['photo3']) && !empty($_FILES['photo3'])
 		&& isset($_POST['SKU_code']) && !empty($_POST['SKU_code'])
-		&& isset($_POST['add_date']) && !empty($_POST['add_date'])
 		){
 
 			$brand = strip_tags($_POST['brand']);
@@ -27,37 +26,28 @@
 			$photo2 = file_get_contents($_FILES['photo2']['tmp_name']);
 			$photo3 = file_get_contents($_FILES['photo3']['tmp_name']);
 			$SKU_code = strip_tags($_POST['SKU_code']);
-			$add_date = strip_tags($_POST['add_date']);
 
-			//var_dump ($_FILES['photo1']);
-			//$test = mysql_real_escape_string(file_get_contents($_FILES["photo1"]["tmp_name"]));
-			//echo($test);
-			//echo("<br>");
-			//echo(phpinfo());
-			//var_dump($_FILES['photo1']);
-			//echo("<br>");
-			//echo($photo1);
+			date_default_timezone_set('Europe/Paris');
+			$add_date = date("Y-m-d H:i:s");
 
-			$sql = "INSERT INTO `Shoes` (`brand`, `name`, `size`, `price`, `desc`, `n_available`, `photo1`, `photo2`, `photo3`, `SKU_code`, `add_date`) VALUES (:brand, :name, :size, :price, :desc, :desc, :n_available, :photo1, :photo2, :photo3, :SKU_code, :add_date);";
+			$sql = "INSERT INTO `Shoes` (`brand`, `name`, `size`, `price`, `desc`, `n_available`, `photo1`, `photo2`, `photo3`, `SKU_code`, `add_date`) VALUES (?, ?, ?, ?, ?, ? , ? , ?, ?, ?, '$add_date');";
 
 			$query = $db->prepare($sql);
 
-			$query->bindValue(':brand', $brand, PDO::PARAM_STR);
-			$query->bindValue(':name', $name, PDO::PARAM_STR);
-			$query->bindValue(':size', $size, PDO::PARAM_INT);
-			$query->bindValue(':price', $price, PDO::PARAM_INT);
-			$query->bindValue(':desc', $desc, PDO::PARAM_STR);
-			$query->bindValue(':n_available', $n_available, PDO::PARAM_INT);
-			$query->bindValue(':photo1', $photo1, PDO::PARAM_LOB);
-			$query->bindValue(':photo2', $photo2, PDO::PARAM_LOB);
-			$query->bindValue(':photo3', $photo3, PDO::PARAM_LOB);
-			$query->bindValue(':SKU_code', $SKU_code, PDO::PARAM_STR);
-			$query->bindValue(':add_date', $add_date, PDO::PARAM_STR);
-
+			$query->bindValue(1, $brand, PDO::PARAM_STR);
+			$query->bindValue(2, $name, PDO::PARAM_STR);
+			$query->bindValue(3, $size, PDO::PARAM_INT);
+			$query->bindValue(4, $price, PDO::PARAM_INT);
+			$query->bindValue(5, $desc, PDO::PARAM_STR);
+			$query->bindValue(6, $n_available, PDO::PARAM_INT);
+			$query->bindValue(7, $photo1, PDO::PARAM_STR);
+			$query->bindValue(8, $photo2, PDO::PARAM_STR);
+			$query->bindValue(9, $photo3, PDO::PARAM_STR);
+			$query->bindValue(10, $SKU_code, PDO::PARAM_STR);
 
 			$query->execute();
-
-			//header('Location: listing.php');
+			
+			header('Location: listing.php');
 
 		}
 
@@ -69,7 +59,32 @@
 
 <html><head></head><body>
 
+	<style>
 
+		body {
+		padding: 20px;
+		}
+
+		a {
+		border: solid 2px #0C6EFD;
+		padding: 7px;
+		transition: 0.3s;
+		border-radius: 5px;
+		text-decoration: none;
+		color: #333;
+		}
+		
+		a:hover{
+		transition: 0.3s;
+		background-color: #0C6EFD;
+		color: #FFF;
+		}
+
+	</style>
+
+	<a href="listing.php">Retour</a>
+	<br><br>
+	
 	<form method="post" enctype="multipart/form-data">
 
 
@@ -111,10 +126,6 @@
 
 		<label for="SKU_code">Code SKU</label>
 		<input type="text" name="SKU_code" id="SKU_code">
-		<br>
-
-		<label for="add_date">Date d'ajout</label>
-		<input type="text" name="add_date" id="add_date">
 		<br>
 
 		<button>Ajouter</button>
