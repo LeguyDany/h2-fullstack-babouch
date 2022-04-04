@@ -160,10 +160,6 @@
 		</table>
 		</div>
 	</div>
-	<div>
-		
-
-
 
 	<!-- Numéro de page  -->
 	<?php
@@ -176,6 +172,20 @@
 	}
 
 	?>
+
+	<nav>
+		<ul class="pagination justify-content-end">	
+			<li class="page-item">
+				<a href="" class="page-link"<a>
+			</li>
+		</ul>
+	</nav>
+
+	
+
+
+
+			
 
 	
 

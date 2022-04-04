@@ -1,12 +1,13 @@
-<html>
-
-<head></head>
-
-<body>
-
-	<?php
+<?php
 
 	require('connect.php');
+
+	$sql = "SELECT * FROM `Images` WHERE `name` LIKE '%Connexion%'";
+
+	$query = $db->prepare($sql);
+	$query->execute();
+
+	$img_connexion = $query->fetchAll(PDO::FETCH_ASSOC);
 
 	session_start(); // Permet de commencer une session utilisateur sur notre site.
 
@@ -46,23 +47,54 @@
 
 	}
 
-	?>
+?>
 
-	<form class="box" action="" method="post" name="login">
+<!-- ========== Partie html ==========  -->
+<html>
 
-		<h1 class="box-title">Connexion</h1>
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://meyerweb.com/eric/tools/css/reset/reset.css" rel="stylesheet">
+		<link href="../css/connection.css" rel="stylesheet">
+	    <title>Babouche</title>
+	</head>
+<body>
 
-		<input type="text" class="box-input" name="username" placeholder="Nom d'utilisateur">
-		<input type="password" class="box-input" name="password" placeholder="Mot de passe">
-		<input type="submit" value="Connexion " name="submit" class="box-button">
+	<section id="connection">
+		<!-- Image d'une paire.  -->
+		<?= '<img src="data:image/jpeg;base64,'.base64_encode($img_connexion[0]['image']).'"/>' ?>
 
-		<p class="box-register">Vous êtes nouveau ici? <a href="register.php">S'inscrire</a></p>
+		<!-- Formulaire de connexion.  -->
+		<div>
+			<h1>Login</h1>
 
-		<?php if (! empty($message)) { ?> 
-			<!-- Si la variable $message contient quelque chose, nous donne un feedback en cas d'erreur. -->
-			<p class="errorMessage"><?php echo $message; ?></p>
-		<?php } ?>
-	</form>
+			<form method="post" name="login">
+
+				<input type="text" name="username" placeholder="Email">
+				<input type="password" name="password" placeholder="Mot de passe">
+
+				<div>
+					<div>
+						<input type="checkbox" id="remember_me" name="remember_me">
+						<label for="remember_me">Se souvenir de moi</label>
+					</div>
+
+					<a href="">Mot de passe oublié ?</a>
+				</div>
+				
+				<input type="submit" value="Connexion " name="submit">
+
+				<p>Vous n'avez pas de compte ? <a href="register.php">Commencer</a></p>
+
+				<?php if (! empty($message)) { ?> 
+					<!-- Si la variable $message contient quelque chose, nous donne un feedback en cas d'erreur. -->
+					<p class="errorMessage"><?php echo $message; ?></p>
+				<?php } ?>
+			</form>
+		</div>
+	</section>
 
 </body>
 

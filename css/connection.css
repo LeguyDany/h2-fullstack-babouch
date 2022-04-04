@@ -1,0 +1,120 @@
+
+
+/* ===== Section formulaire de connexion  ===== */
+section#connection{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+/* Partie image  */
+section#connection > img {
+	width: 50vw;
+	height: 80vh;
+	object-fit:cover;
+}
+
+
+/* Parie formulaire  */
+section#connection > div {
+	margin: auto;
+	padding-left: 8%;
+}
+section#connection > div > h1 {
+	color: #101EF1;
+	font-size: 60px;
+	margin: 30px 10px;
+}
+
+/* Champs à remplir  */
+input[type=text], input[type=password]{
+	color: #8F8F8F;
+	border: solid 2px #8F8F8F;
+	height: 4em;
+	width: 40vw;
+	padding: 20px;
+	margin: 10px;
+}
+::placeholder{
+	font-size: 20px;
+	color: #BCBCBC;
+	transform: translateY(2px);
+}
+
+/* Informations au tour des champs  */
+form > div {
+	display: flex;
+	justify-content: space-between;
+	width: 40vw;
+	margin: 10px;
+}
+form > div > div {
+	transform: translateX(-4px);
+}
+a {
+	color: #8F8F8F;
+	text-decoration: none;
+}
+form > div > a {
+	transform: translateY(2px);
+}
+
+/* Boutton pour se connecter  */
+input[type=submit]{
+	width: 40vw;
+	height: 2.75em;
+	background-color: #101EF1;
+	border: none;
+	font-size: 1.25em;
+	color: #FFF;
+	margin: 10px;	
+}
+
+/* S'inscrire  */
+form > p {
+	margin:	10px;
+	color: #8F8F8F;
+}
+form > p > a {
+	color: #101EF1;
+}
+
+/* Responsive  */
+@media screen AND (max-width: 900px){
+	section#connection{
+		grid-template-columns: 1fr;
+	}
+	section#connection > img {
+		width: 100vw;
+		height: 50vh;
+		object-position: 50% 75%;
+	}
+	section#connection > div {
+		transform: translateX(0%);
+		padding-left: 8%;
+	}
+
+	input[type=text], input[type=password]{
+		width: 80vw;
+	}
+
+	form > div {
+		width: 80vw;
+	}
+	input[type=submit]{
+		width: 80vw;
+	}
+}
+
+@media screen AND (max-width: 376px){
+	section#connection > img {
+		height: 30vh;
+	}
+
+	form > div{
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: 10px;
+
+	}
+}
+
