@@ -1,0 +1,394 @@
+
+/* ========== Le fond ========== */
+section#un {
+    margin: 85px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+section#deux {
+    margin: 100px;
+}
+section#trois {
+    margin: 100px;
+}
+/* ========== Le texte ========== */
+    @font-face {
+        font-family: "MonumentExtended-Regular";
+        src: local("../assets/font/MonumentExtended-FreeForPersonalUse/MonumentExtended-Regular.otf");
+        format("woff");
+    }
+    @font-face {
+        font-family: "DXRigraf-SemiBold";
+        src: local("../assets/font/DX-Rigraf-Free/DXRigraf-SemiBold.otf");
+        format("woff");
+    }
+    @font-face {
+        font-family: "DXRigraf-Regular";
+        src: local("../assets/font/DX-Rigraf-Free/DXRigraf-Regular.otf");
+        format("woff");
+    }
+
+    /*Les balises H */
+    h1#Nike {
+        font-family: MonumentExtended-Regular, sans-serif;
+        font-size: 40px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 100%;
+        color: #8F8F8F;
+        margin: 20px;
+    }
+    h1#Recommandations {
+        font-family: MonumentExtended-Regular, sans-serif;
+        font-size: 40px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 100%;
+        color: #1F1F1F;
+        margin: 20px;
+    }
+    h2#Dunk {
+        font-family: MonumentExtended-Regular, sans-serif;
+        font-size: 30px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 100%;
+        color: #1F1F1F;
+        margin: 20px;
+    }
+    div#taille > h3 {
+        font-family: MonumentExtended-Regular, sans-serif;
+        font-size: 18px;
+        font-weight: 200;
+        font-style: normal;
+        line-height: 100%;
+        color: #8F8F8F;
+    }
+    div#Ajouter > h3 {
+        font-family: MonumentExtended-Regular, sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 100%;
+        color: #FFFFFF;
+    }
+    h4#euro {
+        font-family: MonumentExtended-Regular, sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 100%;
+        margin: 20px;
+    }
+    h4#taille {
+        font-family: MonumentExtended-Regular, sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 100%;
+        margin-top: 40px;
+        margin-left: 20px;
+        margin-bottom: 30px;
+    }
+    h5 {
+        font-family: DXRigraf-SemiBold, sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+        font-style: normal;
+        line-height: 120%;
+    }
+    div#Plus > p {
+        font-family: DXRigraf-Regular, sans-serif;
+        font-size: 24px;
+        font-weight: 200;
+        font-style: normal;
+        line-height: 120%;
+        color: #8F8F8F;
+    }
+    div#Plus > p#description {
+        font-family: DXRigraf-Regular, sans-serif;
+        font-size: 24px;
+        font-weight: 200;
+        font-style: normal;
+        line-height: 120%;
+        color: #101EF1;
+    }
+    div#texte > p {
+        font-family: DXRigraf-Regular, sans-serif;
+        font-size: 24px;
+        font-weight: 200;
+        font-style: normal;
+        line-height: 120%;
+        color: #131313;
+    }
+
+    /*Ligne orange*/
+    hr#Dunk {
+        border: 2px solid #FFBF37;
+        width: 60%;
+        height: auto;
+        margin: 20px;
+    }
+    hr#Plus {
+        display: block;
+        clear: both;
+        border: 1px solid #8F8F8F;
+        width: 87%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+/* ========== Côté gauche (les images) ========== */
+    /*Grande image*/
+    div#photo_sneakers1 {
+        display: grid;
+        grid-template-rows: 4fr 1fr;
+        justify-content: center;
+        padding: 40px;
+        justify-items: stretch;
+        align-items: center;
+    }
+    img#photo_1 {
+        height: auto;
+        width: auto;
+    }
+    /*Petites image*/
+    div#photo_sneakers2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-content: center;
+    }
+    img#photo_2 {
+        height: 131px;
+        width: 214px;
+    }
+    img#photo_3 {
+        height: 131px;
+        width: 214px;
+    }
+    img#photo_4 {
+        height: 131px;
+        width: 214px;
+    }
+
+/* ========== Les tailles ========== */
+    /*Les carrés*/
+    div#taille {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 20px;
+    }
+    div#taille > h3 {
+        padding: 2.5%;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #8F8F8F;
+    }
+    h3#barre {
+        text-decoration: line-through;
+    }
+    /*Ajouter au panier*/
+    div#Ajouter {
+        width: 82%;
+        display: grid;
+        grid-template-rows: 1fr;
+        justify-content: space-around;
+        padding: 20px;
+        background-color: #101EF1;
+        color: #101EF1;
+        margin: auto;
+    }
+
+/* ========== Desciption ========== */
+    /*Catégorie*/
+    div#Plus {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin: 20px;
+        margin-top: 30px;
+    }
+    /*Description*/
+    div#texte {
+        margin: 20px;
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+/* ========== Recommandations ========== */
+    div#Recommandations {
+        margin: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+    /*Image_1*/
+    h6#Team_red {
+        font-family: DXRigraf-SemiBold, sans-serif;
+        font-size: 21px;
+        font-weight: 500;
+        font-style: normal;
+        line-height: 120%;
+        margin: 10px;
+        text-align: center;
+    }
+    h6#Team_red_2 {
+        font-family: DXRigraf-SemiBold, sans-serif;
+        font-size: 21px;
+        font-weight: 100;
+        font-style: italic;
+        line-height: 120%;
+        margin: 10px;
+        text-align: center;
+    }
+    /*Image_2*/
+    div#image_2 {
+        justify-content: center;
+    }
+    h6#yeezy {
+        font-family: DXRigraf-SemiBold, sans-serif;
+        font-size: 21px;
+        font-weight: 500;
+        font-style: normal;
+        line-height: 120%;
+        margin: 10px;
+        text-align: center;
+    }
+    h6#yeezy_2 {
+        font-family: DXRigraf-SemiBold, sans-serif;
+        font-size: 21px;
+        font-weight: 100;
+        font-style: italic;
+        line-height: 120%;
+        margin: 10px;
+        text-align: center;
+    }
+    /*Image_3*/
+    h6#purple {
+        font-family: DXRigraf-SemiBold, sans-serif;
+        font-size: 21px;
+        font-weight: 500;
+        font-style: normal;
+        line-height: 120%;
+        margin: 10px;
+        text-align: center;
+    }
+    h6#purple_2 {
+        font-family: DXRigraf-SemiBold, sans-serif;
+        font-size: 21px;
+        font-weight: 100;
+        font-style: italic;
+        line-height: 120%;
+        margin: 10px;
+        text-align: center;
+    }
+    /*Image_4*/
+    h6#Two_tone {
+        font-family: DXRigraf-SemiBold, sans-serif;
+        font-size: 21px;
+        font-weight: 500;
+        font-style: normal;
+        line-height: 120%;
+        margin: 10px;
+        text-align: center;
+    }
+    h6#Two_tone_2 {
+        font-family: DXRigraf-SemiBold, sans-serif;
+        font-size: 21px;
+        font-weight: 100;
+        font-style: italic;
+        line-height: 120%;
+        margin: 10px;
+        text-align: center;
+    }
+div#commentaire {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+div#commande {
+    width: 60%;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    justify-content: start;
+    padding: 20px;
+    background-color: #f5f5f5;
+    margin: auto;
+    align-items: center;
+    justify-items: start;
+}
+div#parfait {
+    width: 60%;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    justify-content: start;
+    padding: 20px;
+    background-color: #f5f5f5;
+    margin: auto;
+    align-items: center;
+    justify-items: start;
+}
+div#top {
+    width: 60%;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    justify-content: start;
+    padding: 20px;
+    background-color: #f5f5f5;
+    margin: auto;
+    align-items: center;
+    justify-items: start;
+}
+div#commande > h2 {
+    font-family: MonumentExtended-Regular, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 100%;
+    color: #1F1F1F;
+    margin-left: 20px;
+}div#parfait > h2 {
+    font-family: MonumentExtended-Regular, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 100%;
+    color: #1F1F1F;
+    margin-left: 20px;
+}div#top > h2 {
+    font-family: MonumentExtended-Regular, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 100%;
+    color: #1F1F1F;
+    margin-left: 20px;
+}
+div#commande > p {
+    font-family: DXRigraf-Regular, sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    font-style: normal;
+    line-height: 120%;
+    color: #131313;
+    margin-left: 20px;
+}
+div#parfait > p {
+    font-family: DXRigraf-Regular, sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    font-style: normal;
+    line-height: 120%;
+    color: #131313;
+    margin-left: 20px;
+}
+div#top > p {
+    font-family: DXRigraf-Regular, sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    font-style: normal;
+    line-height: 120%;
+    color: #131313;
+    margin-left: 20px;
+}
