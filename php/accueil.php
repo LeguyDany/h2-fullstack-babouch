@@ -16,9 +16,9 @@
             
             <!-- Les liens du header -->
             <div id="liens">
-                <a href="">Sneakers</a>
-                <a href="">Découvrir</a>
-                <a href="">Nouveautés</a>
+                <a href="accueil.php">Accueil</a>
+                <a href="listing_client.php">Sneakers</a>
+                <a href="">Contact</a>
             </div>
 
             <!-- Barre de recherche  et profil-->
@@ -30,7 +30,7 @@
                 </form>
 
                 <!-- Profil-->
-                <a href=""><img src="../assets/icon/user.svg" alt="Profil"></a>
+                <a href="connection.php"><img src="../assets/icon/user.svg" alt="Profil"></a>
 
             </div>
         <!--Fin barre de navigation -->
@@ -41,10 +41,8 @@
         <!-- === SLIDER === -->
         <section id="slider">
             <figure>
-                <img src="/assets/icon/Slider-1.svg" alt="">
-                <img src="/assets/icon/Slider-5.svg" alt="">
-                <img src="/assets/icon/Slider-3.svg" alt="">
-                <img src="/assets/icon/Slider-4.svg" alt="">
+                <img src="/assets/Image/Slider-1.svg" alt="">
+
             </figure>
 
     
@@ -151,11 +149,11 @@
     <div class="footer-container">
         <div class="footer">
             <div class="footer-heading footer-0">
-                <img src="/assets/image/icon/LogoW.svg" alt="LogoBabouche" id="logo2"/>
+                <img src="/assets/icon/LogoW.svg" alt="LogoBabouche" id="logo2"/>
                 <div class="footer-rs">
-                    <a href="#"><img src="/assets/Image/icon/FbWhite.svg" alt="Fb" id=""/></a>
-                    <a href="#"><img src="/assets/Image/icon/InstaWhite.svg" alt="Insta" id=""/></a>
-                    <a href="#"><img src="/assets/Image/icon/TwitterW.svg" alt="Twitter" id=""/></a>
+                    <a href="#"><img src="/assets/icon/FbWhite.svg" alt="Fb" id=""/></a>
+                    <a href="#"><img src="/assets/icon/InstaWhite.svg" alt="Insta" id=""/></a>
+                    <a href="#"><img src="/assets/icon/TwitterW.svg" alt="Twitter" id=""/></a>
                 </div>    
             </div>
 

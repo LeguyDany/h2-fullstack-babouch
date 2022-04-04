@@ -70,7 +70,7 @@
             
             <!-- Les liens du header -->
             <div id="liens">
-                <a href="">Accueil</a>
+                <a href="accueil.php">Accueil</a>
                 <a href="listing_client.php">Sneakers</a>
                 <a href="">Contact</a>
             </div>

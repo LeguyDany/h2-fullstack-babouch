@@ -61,27 +61,26 @@ if (isset($_REQUEST['username'], $_REQUEST['password'])){
 
 ?>
 
-<section id=="inscription">
-	<?= '<img src="data:image/jpeg;base64,'.base64_encode($img_connexion[0]['image']).'"/>' ?>
-	<div> 
-		<h1>Inscription</h1>
-		<h1>Sinscrire</h1>
+	<section id="inscription">
+		<?= '<img src="data:image/jpeg;base64,'.base64_encode($img_connexion[0]['image']).'"/>' ?>
+		<div>
+			<h1>S'inscrire</h1>
 
 
-		<form class="box" action="" method="post" name="register" >
+			<form class="box" action="" method="post" name="register" >
 
-   			<!-- Les différents champs. Ces champs vont pouvoir nourrir le code php plus haut. -->
-    			<input type="text" class="box-input" name="username" placeholder="Nom d'utilisateur" required />
-			<input type="password" class="box-input" name="password" placeholder="Mot de passe" required />
+   				<!-- Les différents champs. Ces champs vont pouvoir nourrir le code php plus haut. -->
+    				<input type="text" class="box-input" name="username" placeholder="Nom d'utilisateur" required />
+				<input type="password" class="box-input" name="password" placeholder="Mot de passe" required />
 		
  
-			<input type="submit" name="submit" value="S'inscrire" class="box-button">
+				<input type="submit" name="submit" value="S'inscrire" class="box-button">
 
-    			<p class="box-register">Déjà Inscrit ?<a href="connection.php">Connectez-vous ici</a></p>
+    				<p class="box-register">Déjà Inscrit ?<a href="connection.php">  Connectez-vous ici</a></p>
 
-		</form>
-	</div>
-</section>
+			</form>
+		</div>
+	</section>
 
 <?php } ?>
 
