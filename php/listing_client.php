@@ -232,44 +232,6 @@
         </div>
     </div>
 
-     <!-- FOOOTER -->
-     <div class="footer-container">
-        <div class="footer">
-            <div class="footer-heading footer-0">
-                <img src="/assets/icon/LogoW.svg" alt="LogoBabouche" id="logo2"/>
-                <div class="footer-rs">
-                    <a href="#"><img src="/assets/icon/FbWhite.svg" alt="Fb" id=""/></a>
-                    <a href="#"><img src="/assets/icon/InstaWhite.svg" alt="Insta" id=""/></a>
-                    <a href="#"><img src="/assets/icon/TwitterW.svg" alt="Twitter" id=""/></a>
-                </div>    
-            </div>
-
-            <div class="footer-heading footer-1">
-                <h2>Infos</h2>
-                <a href="#">Mon compte</a>
-                <a href="#">Aides & Infos</a>
-                <a href="#">Conditions d’utilisation </a>
-                <a href="#">Mentions Légales</a>
-                <a href="#">RGPD</a>
-            </div>
-            <div class="footer-heading footer-2">
-                <h2>Contact</h2>
-                <a href="#">Gabriel Akil</a>
-                <a href="#">Noah Dahan</a>
-                <a href="#">Alexandre Bellamy</a>
-                <a href="#">Dany Leguy</a>
-                <a href="#">Evan Thomas</a>
-            </div>
-            <div class="footer-heading footer-3">
-                <h2>Chercher</h2>
-                <a href="#">Rechercher</a>
-                <a href="#">Sneakers Femme</a>
-                <a href="#">Sneakers Homme</a>
-                <a href="#">Prochaines Sorties</a>
-            </div>
-        </div>
-    </div>
-
 
 </body>
 
