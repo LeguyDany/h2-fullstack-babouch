@@ -11,11 +11,11 @@
                 // Compte le nombre total de page qu'il y aura à afficher en fonction du nombre de paires rentrées.
 
                 $all_products_size = count($all_products);
-                if($all_products_size%10 == 0){
-                        $page_total = floor( $all_products_size / 10);
+                if($all_products_size%9 == 0){
+                        $page_total = floor( $all_products_size / 9);
 
                 }else{
-                        $page_total = floor( $all_products_size / 10 + 1);
+                        $page_total = floor( $all_products_size / 9 + 1);
                 }
 
                 return $page_total;
@@ -48,8 +48,36 @@
 
                 $page_total = num_page_total($result);
         }
-	
-	
+	        // Compte le nombre de produits qu'il y a à afficher au total.
+        if(isset($result)){
+                $result_size = count($result);
+        }
+
+        // On va chercher à mettre en place une numérotation de page et à seulement afficher 10 éléments par page en fonction d'où on se situe dans la numérotation de page.
+        if(isset($_GET['current_num_page']) && !empty($_GET['current_num_page']) && empty($_POST['search'])){
+
+                $offset = 9 * $_GET['current_num_page'] - 9;
+
+                // ==== Numérotation de page avec des mots clés entrés dans la barre de recherche. ==== //
+                //if(isset($search) && !empty($search)){
+
+                //      echo $search;
+                //      $sql = "SELECT * FROM `Shoes` WHERE `name` LIKE :search OR `brand` LIKE :search LIMIT 10 OFFSET $offset;";
+
+                //      $query = $db->prepare($sql);
+
+                //      $query->bindValue(':search', '%'.$search.'%', PDO::PARAM_STR);
+                //      $query->execute();
+                //      $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                //}else{
+                
+                // ==== Numérotation de page dans le cas où rien est entré dans la barre de recherche. ==== //
+                $sql = "SELECT * FROM `Shoes` limit 9 OFFSET $offset;";
+                $query = $db->prepare($sql);
+                $query->execute();
+                $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        }
+
 
 
 ?>
@@ -61,6 +89,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://meyerweb.com/eric/tools/css/reset/reset.css" rel="stylesheet">
+	<link href="../css/header.css" rel="stylesheet">
 	<link href="../css/listing_client.css" rel="stylesheet">
 	<title>Babouche</title>
 </head>
@@ -70,52 +99,100 @@
 	<header>
 	<!--Barre de navigation -->
 	    <!-- Image -->
-	    <img src="/assets/image/icon/LogoBlack.svg" alt="Babouch" id="logo"/>
+	    <img src="../assets/icon/LogoBlack.svg" alt="Babouch" id="logo"/>
 	    
 	    <!-- Les liens du header -->
 	    <div id="liens">
-		<a href="">Sneakers</a>
-		<a href="">Découvrir</a>
-		<a href="">Nouveautés</a>
+		<a href="">Accueil</a>
+		<a href="listing_client.php">Sneakers</a>
+		<a href="">Contact</a>
 	    </div>
 
-	    <!-- Barre de recherche  et profil-->
+	    <!-- Barre de recherche et profil-->
 	    <div id="recherche">
 		
 		<!-- Barre de recherche -->
-		<form>
+		<form method="post">
 		    <input type="text" name="search"  placeholder="Chercher" id="searchbar">
 		</form>
 
 		<!-- Profil-->
-		<a href=""><img src="/assets/image/icon/user.svg" alt="Profil"></a>
+		<a href="connection.php"><img src="../assets/icon/user.svg" alt="Profil"></a>
 
 	    </div>
 	<!--Fin barre de navigation -->
 	</header>
 
 
-
-	<!-- Section filtre + listing de chaussures  -->
-	<section>
-		
-		<!-- Titre de section  -->
-		<div id="title_section">
-			<h1>Nos sneakers</h1>
-			<hr>	
-		</div>
-
-		<div id="filtre"> 
-
-		</div>
-	
-		
-		<div id="listing">
+	<main>
+		<!-- Section filtre + listing de chaussures  -->
+		<section>
 			
-		</div>
+			<!-- Titre de section  -->
+			<div id="title_section">
+				<h1>Sneakers</h1>
+				<hr>
+			</div>
+
+			<div id="content">
+
+				<form method="post" id="filter"> 
+					
+					<hr>	
+					<h3>Marques</h3>
+					
+					<hr>	
+					<h3>Prix</h3>
+					
+					<button>Filtrer</button>
+
+				</form>
+			
+
+				<div id="listing">
+
+				<?php foreach($result as $shoes){?>
+					<div>
+						<?='<img src="data:image/jpeg;base64,'.base64_encode($shoes['photo2']).'"/>' ?>
+						<a href="<?=$shoes['shoes_id'] ?>"><?=$shoes['name']?></a>
+						<br> <hr>
+						<p>à partir de <?=$shoes['price']?> €</p>
+					</div>
+
+				<?php } ?>
+
+				</div>
 
 
-	</section>
+			</div>
+
+			<div id="page_number">
+
+				<!-- Numéro de page  -->
+				<?php
+				// On va compter le nombre de page qu'il y a en fonction du nombre de paires de chaussure.
+
+				if($page_total - 1 > 0 && empty($_POST['search'])){
+					for($i = 1; $i<= $page_total; $i++ ){
+						if($_GET['current_num_page'] == $i){
+							?>
+							<a href="listing_client.php?current_num_page=<?=$i?>" style="background-color: #101EF1; color: #FFF"><p><?=$i?></p></a>
+							<?php }else{
+							echo "<a href='listing_client.php?current_num_page=".$i."'><p style='color: #101EF1'>".$i."</p></a>" ;
+
+						}
+					}
+				}
+
+				?>
+
+			</div>
+
+
+			
+
+		</section>
+	</main>
 
 
 </body>

@@ -57,10 +57,40 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://meyerweb.com/eric/tools/css/reset/reset.css" rel="stylesheet">
+		<link href="../css/header.css" rel="stylesheet">
 		<link href="../css/connection.css" rel="stylesheet">
 	    <title>Babouche</title>
 	</head>
 <body>
+
+    <header>
+        <!--Barre de navigation -->
+            <!-- Image -->
+            <img src="../assets/icon/LogoBlack.svg" alt="Babouch" id="logo"/>
+            
+            <!-- Les liens du header -->
+            <div id="liens">
+                <a href="">Accueil</a>
+                <a href="listing_client.php">Sneakers</a>
+                <a href="">Contact</a>
+            </div>
+
+            <!-- Barre de recherche  et profil-->
+            <div id="recherche">
+                
+                <!-- Barre de recherche -->
+                <form>
+                    <input type="search" placeholder="Chercher" id="searchbar">
+                </form>
+
+                <!-- Profil-->
+                <a href="connection.php"><img src="../assets/icon/user.svg" alt="Profil"></a>
+
+            </div>
+        <!--Fin barre de navigation -->
+
+    </header>
+
 
 	<section id="connection">
 		<!-- Image d'une paire.  -->

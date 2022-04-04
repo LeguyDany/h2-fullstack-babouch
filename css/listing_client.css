@@ -1,65 +1,119 @@
-/* ============ Header ============ */
-    header {
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        justify-content: start;
-        background-color: #FFF;
-        box-shadow: 0px 0px 30px 2px rgba(0,0,0,.05);
-        position: sticky;
-        top: 0px;
-        height: 100px;
-        padding-left: 50px;
-        z-index: 5;
-    }
-    
-    header > div {
-        padding: 40px;
-    }
-    
+@font-face {
+    font-family: "MonumentExtended-Regular";
+    src: url("../assets/font/MonumentExtended-FreeForPersonalUse/MonumentExtended-Regular.otf") format("truetype")
+}
 
-    /* Logo */
-    img#logo {
-        height: 50px;
-        display: block;
-        position: relative;
-        top: 25px;
-    }
 
-    /* Links */
-    a {
-        font-family: "DXRigraf-Regular";
-        text-decoration: none;
-        color: #333333;
-        margin: 10px;
-    }
+/* ========== Titre de section ==========  */
+div#title_section {
+	display: flex;
+	font-family: "MonumentExtended-Regular";
+	margin: 40px 0px 40px 50px;
+}
+div#title_section > h1 {
+	font-size: 40px;
+	color: #101EF1;
+}
+div#title_section > hr{
+	width: 100vw;
+	margin-left: 10px;
+	height: 2.5px;
+	border: none;
+	background-color: #101EF1;
+	transform: translateY(20px);
+}
 
-    #liens a:hover{
-    color: #101EF1;
-    transition: 0.3s ease-out;
-    }
-    
-    /* Search bar */
-    header > div#recherche {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 15px;
-    }
-    input#searchbar {
-        font-size: 15px;
-        padding: 15px;
-        padding-right: 20px;
-        border: solid 2px #101EF1;
-        outline:none;
-        min-width: 175px;
-        width: 20vw;
-        position: relative;
-        top: -12px;
-        height: 45px;
-        font-family: "DXRigraf-Regular"
-    }
-    header > div#recherche > a {
-        position: relative;
-        top: -15px;
-    }
 
+
+
+/* ========== Contenu de la page ==========  */
+div#content{
+	display: grid;
+	grid-template-columns: 2fr 4fr;
+}
+
+
+/* === Les filtres ===*/
+form#filter {
+	padding: 0px 50px;
+	font-family: "MonumentExtended-Regular";
+}
+form#filter > h3 {
+	font-size: 18px;
+	color: #101EF1;
+}
+form#filter > hr {
+	background-color: #8F8F8F;
+	border: none;
+	height: 1px;
+}
+
+button{
+	margin: 30px 0px ;
+	border: 2px solid #101EF1;
+	background-color: #FFF;
+	color: #101EF1;
+	padding: 10px 40px;
+	text-decoration: none;
+	text-align: center;
+	font-size: 20px;
+	font-family: "MonumentExtended-Regular";
+	transition: 0.5s;
+}
+button:hover{
+	background-color: #101EF1;
+	border: 2px solid #101EF1;
+	transition: 0.5s;
+	color: #FFF;
+}
+
+
+/* === Le listing de chaussures ===  */
+div#listing{
+	transform: translateY(-7px);
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Vignettes individuelles */
+div#listing > div {
+	width: 200px;
+	padding: 10px;
+	margin: 20px;
+	background-color: #FAF9FA;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+}
+div#listing > div > img {
+	width: 200px;
+	position: relative;
+	top: 5px;
+}
+div#listing > div > p {
+	text-align: center;
+	font-style: italic;
+	font-weight: lighter;
+} 
+div#listing > div > a {
+	margin: 20px 10px;
+	font-weight: bold;
+	transition: 0.5s;
+}
+div#listing > div > a:hover{
+	color: #101FE1;
+	transition: 0.5s;
+}
+
+/* Pagination  */
+div#page_number{
+	display: flex;
+	width: 100vw;
+	justify-content: center;
+}
+div#page_number > a {
+	text-align: right;
+	border: solid 1px #101EF1;
+	padding: 15px 20px;
+	font-family: "MonumentExtended-Regular";
+	transition: 0.5s;
+}
 

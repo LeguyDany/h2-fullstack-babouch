@@ -1,5 +1,15 @@
 <html>
-<head></head>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://meyerweb.com/eric/tools/css/reset/reset.css" rel="stylesheet">
+		<link href="../css/register.css" rel="stylesheet">
+		<title>Babouche</title>
+	</head>
+
+
 <body>
 
 <?php
@@ -39,20 +49,28 @@ if (isset($_REQUEST['username'], $_REQUEST['password'])){
 
 ?>
 
-<!-- Formulaire où on va rentrer les informations pour s'enregistrer. -->
-<form class="box" action="" method="post">
+<section id=="inscription">
+	<img src="">
+	<div> 
+		<h1>Inscription</h1>
+		<h1>S'inscrire</h1>
 
-    <h1 class="box-logo box-title">Inscription</a></h1>
-    <h1 class="box-title">S'inscrire</h1>
 
-    <!-- Les différents champs. Ces champs vont pouvoir nourrir le code php plus haut. -->
-    <input type="text" class="box-input" name="username" placeholder="Nom d'utilisateur" required />
-    <input type="password" class="box-input" name="password" placeholder="Mot de passe" required />
-    <input type="submit" name="submit" value="S'inscrire" class="box-button" />
+		<!-- Formulaire où on va rentrer les informations pour senregistrer --->
+		<form class="box" action="" method="post" name="register" >
 
-    <p class="box-register">Déjà inscrit? <a href="connection.php">Connectez-vous ici</a></p>
+   			<!-- Les différents champs. Ces champs vont pouvoir nourrir le code php plus haut. -->
+    			<input type="text" class="box-input" name="username" placeholder="Nom d'utilisateur" required />
+			<input type="password" class="box-input" name="password" placeholder="Mot de passe" required />
+		
+ 
+			<input type="submit" name="submit" value="Sinscrire" class="box-button">
 
-</form>
+    			<p class="box-register">Déjà inscrit? <a href="connection.php">Connectez-vous ici</a></p>
+
+		</form>
+	</div>
+</section>
 
 <?php } ?>
 
