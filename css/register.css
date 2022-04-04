@@ -16,16 +16,16 @@ section#inscription > div{
 	padding-left: 8%;
 }
 
-section#inscription > h1{
-	color : #101EF1;
-	font-size :60px;
+section#inscription > div > h1{
+	color: #101EF1;
+	font-size: 60px;
 	margin: 30px 10px;
 }
 
 /* donné a inscrire */
 input[type=text], input[type=password]{
 	color: #8F8F8F;
-	border: solid 2px; 
+	border: solid 2px #8F8F8F; 
 	height: 4em;
 	width: 40vw;
 	padding: 20px;
@@ -34,10 +34,8 @@ input[type=text], input[type=password]{
 
 ::placeholder{
 	font-size:20px;
-	display: flex;
-	justify-content: space-between;
-	width:40vw;
-	margin:10px;
+	color: #BCBCBC;
+	transform: translateY (2px);
 }
 
 /* Autour des données */

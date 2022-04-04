@@ -56,7 +56,6 @@ if (isset($_REQUEST['username'], $_REQUEST['password'])){
 		<h1>S'inscrire</h1>
 
 
-		<!-- Formulaire où on va rentrer les informations pour senregistrer --->
 		<form class="box" action="" method="post" name="register" >
 
    			<!-- Les différents champs. Ces champs vont pouvoir nourrir le code php plus haut. -->
@@ -64,9 +63,9 @@ if (isset($_REQUEST['username'], $_REQUEST['password'])){
 			<input type="password" class="box-input" name="password" placeholder="Mot de passe" required />
 		
  
-			<input type="submit" name="submit" value="Sinscrire" class="box-button">
+			<input type="submit" name="submit" value="S'inscrire" class="box-button">
 
-    			<p class="box-register">Déjà inscrit? <a href="connection.php">Connectez-vous ici</a></p>
+    			<p class="box-register">Déjà Inscrit ?<a href="connection.php">Connectez-vous ici</a></p>
 
 		</form>
 	</div>
