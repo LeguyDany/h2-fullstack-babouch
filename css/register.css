@@ -7,7 +7,7 @@ section#inscription{
 section#inscription > img{
 	width: 50vw;
 	height: 80vh;
-	object-fit:;
+	object-fit:cover;
 }
 
 /* Inscription du formulaire */

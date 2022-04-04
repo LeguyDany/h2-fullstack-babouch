@@ -5,6 +5,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://meyerweb.com/eric/tools/css/reset/reset.css" rel="stylesheet">
+		<link href="../css/header.css" rel="stylesheet">
+		<link href="../css/footer.css" rel="stylesheet">
 		<link href="../css/register.css" rel="stylesheet">
 		<title>Babouche</title>
 	</head>
@@ -76,7 +78,7 @@ if (isset($_REQUEST['username'], $_REQUEST['password'])){
  
 				<input type="submit" name="submit" value="S'inscrire" class="box-button">
 
-    				<p class="box-register">Déjà Inscrit ?<a href="connection.php">  Connectez-vous ici</a></p>
+    				<p class="box-register">Déjà Inscrit ?<a href="connection.php">Connectez-vous ici</a></p>
 
 			</form>
 		</div>

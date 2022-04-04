@@ -1,0 +1,59 @@
+/* === FOOTER === */
+
+
+
+.footer-container{
+    background-color: #212329;
+    padding: 4rem 0 2rem 0;
+
+}
+
+.footer{
+    width: 80%;
+    height: 35vh;
+    background-color: #212329;
+    color: white;
+    display: flex;
+    justify-content: right;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.footer-heading{
+    display: flex;
+    flex-direction: column;
+    margin-right: 4rem;
+}
+
+.footer-heading h2 {
+    margin-bottom: 2rem;
+    font-size: 20px;
+    font-family: "MonumentExtended-Regular";
+    transform: translateX(-70px);
+
+
+}
+
+.footer-heading a{
+    color: white;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+}
+
+.footer-heading a:hover{
+    color: #8188ee;
+    transition: 0.3s ease-out;
+}
+
+#logo2{
+    transform: translateY(20px);
+}
+
+.footer-rs{
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+    transform: translateY(30px);
+
+    
+}

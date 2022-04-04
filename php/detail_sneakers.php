@@ -1,34 +1,94 @@
+<?php 
+
+	require_once('connect.php');
+
+	$sql = "SELECT * FROM `Shoes` WHERE `shoes_id`=:id";
+
+	$query = $db->prepare($sql);
+
+	$query->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
+	$query->execute();
+
+	$shoes = $query->fetch(PDO::FETCH_ASSOC);
+
+
+	$sql = "SELECT * FROM `Shoes` WHERE `brand`=:brand";
+
+	$query = $db->prepare($sql);
+
+	$query->bindValue(':brand', $shoes['brand'], PDO::PARAM_STR);
+	$query->execute();
+
+	$recommande = $query->fetchAll(PDO::FETCH_ASSOC);
+
+	require_once('close.php');
+?>
+
 <!DOCTYPE html>
 
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../css/styles.css" type="text/css" >
+    <link rel="stylesheet" href="../css/detail_sneakers.css" type="text/css" >
     <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css" >
     <link rel="stylesheet" href="../assets/font/MonumentExtended-FreeForPersonalUse/MonumentExtended-Regular.otf" type="text/css">
+    <link rel="stylesheet" href="../css/header.css" type="text/css" >	
+    <link rel="stylesheet" href="../css/footer.css" type="text/css" >
 </head>
 
 <body>
+
+<header>
+<!--Barre de navigation -->
+    <!-- Image -->
+    <img src="../assets/icon/LogoBlack.svg" alt="Babouch" id="logo"/>
+    
+    <!-- Les liens du header -->
+    <div id="liens">
+	<a href="accueil.php">Accueil</a>
+	<a href="listing_client.php">Sneakers</a>
+	<a href="">Contact</a>
+    </div>
+
+    <!-- Barre de recherche et profil-->
+    <div id="recherche">
+	
+	<!-- Barre de recherche -->
+	<form method="post">
+	    <input type="text" name="search"  placeholder="Chercher" id="searchbar">
+	</form>
+
+	<!-- Profil-->
+	<a href="connection.php"><img src="../assets/icon/user.svg" alt="Profil"></a>
+
+    </div>
+<!--Fin barre de navigation -->
+</header>
+
+
+
+
+
 <main>
 <!--    Le fond de la page-->
     <section id="un">
 
 <!--        Le côté gauche de la page (les images)-->
         <div id="photo_sneakers1">
-            <img id="photo_1" src="../assets/image/The%20Greatest%20%2319%20–%20%20The%20Future.png" alt="image1">
+		<?php echo '<img src="data:image/jpeg;base64,'.base64_encode($shoes['photo1']).'"/>';?> 
             <div id="photo_sneakers2">
-                <img id="photo_2" src="../assets/image/The%20Greatest%20%2319%20–%20%20The%20Future.png" alt="image2">
-                <img id="photo_3" src="../assets/image/nike-dunk-low-court-purple-dd1391-104-pic04%206.png" alt="image3">
-                <img id="photo_4" src="../assets/image/nike-dunk-low-court-purple-dd1391-104-pic04%207.png" alt="image4">
+		<?php echo '<img src="data:image/jpeg;base64,'.base64_encode($shoes['photo1']).'"height="131"/>';?> 
+		<?php echo '<img src="data:image/jpeg;base64,'.base64_encode($shoes['photo2']).'"height="131""/>';?> 
+		<?php echo '<img src="data:image/jpeg;base64,'.base64_encode($shoes['photo3']).'"height="131""/>';?> 
             </div>
         </div>
 
 <!--        Le côté droit de la page (le texte)-->
         <div>
-            <h1 id="Nike">Nike</h1>
-            <h2 id="Dunk">Dunk Low Team Red</h2>
+	<h1 id="Nike"><?=$shoes['brand']?></h1>
+	<h2 id="Dunk"><?=$shoes['name']?></h2>
             <hr id="Dunk">
-            <h4 id="euro">270.00€</h4>
+	    <h4 id="euro"><?=$shoes['price']?>€</h4>
             <h4 id="taille">TAILLE</h4>
             <div id="taille">
                 <h3>37.5</h3>
@@ -47,9 +107,7 @@
             </div>
             <hr id="Plus">
             <div id="texte">
-                <p>Directement inspirée de la version Dunk High Team Red, la nouvelle Dunk Low s'inspire de la tendance bordeaux pour le plus grand plaisir des fans de sneakers.
-                    <br><br>La Nike Dunk Low Team Red se pare d'une tige en cuir blanc, couplée à des empiècements en cuir bordeaux au niveau des œillets, du mudguard et du Swoosh. On note un branding Nike sur le talon et sur la languette. Une midsole blanche, accompagnée d'une outsole bordeaux vient parfaire l'ensemble.
-                    <br><br>Avec une palette de couleur harmonieuse, cette nouvelle Nike Dunk Low ne manquera pas de trouver son public !</p>
+	    <p><?=$shoes['desc']?></p>
             </div>
         </div>
     </section>
@@ -70,31 +128,59 @@
         </div>
     </section>
     <section id="trois">
-        <div>
-            <h1 id="Recommandations">Recommandations . 4</h1>
+	<div>
+
+	    <h1 id="Recommandations">Recommandations . 4</h1>
+
+
+	<?php for($i=1; $i < 5; $i++){ ?>
             <div id="Recommandations">
-                <div id="image_1">
-                    <img id="image_red" src="../assets/image/nike-dunk-low-team-red-wethenew1_2000x%201rouge.png" alt="image_1">
-                    <h6 id="Team_red">Nike Dunk Team Red</h6>
-                    <h6 id="Team_red_2">à partir de 270€</h6>
+		<div id="image_1">
+		    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($recommande[$i]['photo1']).'"height="136px"/>';?>
+		    <h6 id="Team_red"><?=$recommande[$i]['name']?></h6>
+			    <h6 id="Team_red_2">à partir de <?=$recommande[$i]['price']?>€</h6>
                 </div>
-                <div id="image_2">
-                    <img id="image_yeezy" src="../assets/image/air-jordan-1-mid-paris-wethenew-1_1_2000x%201yeezy.png" alt="image_2">
-                    <h6 id="yeezy">Yeezy 700 Wave Runner <br>Solid Grey</h6>
-                    <h6 id="yeezy_2">à partir de 400€</h6>
-                </div>
-                <div id="image_3">
-                    <img id="image_purple" src="../assets/image/nike-dunk-low-court-purple-2021-DD1391-104-wethenew_2000x%201purple.png" alt="image_3">
-                    <h6 id="purple">Nike Dunk Low Court Purple</h6>
-                    <h6 id="purple_2">à partir de 220€</h6>
-                </div>
-                <div id="image_4">
-                    <img id="image_Two" src="../assets/image/nike-dunk-low-disrupt-2-malachite-DH4402-001-2-wethenew-1_2000x%201venice.png" alt="image_4">
-                    <h6 id="Two_tone">Nike Dunk Low Two Tone Grey</h6>
-                    <h6 id="Two_tone_2">à partir de 150€</h6>
-                </div>
-            </div>
+	<?php } ?>
         </div>
     </section>
+
+     <!-- FOOOTER -->
+     <div class="footer-container">
+        <div class="footer">
+            <div class="footer-heading footer-0">
+                <img src="/assets/icon/LogoW.svg" alt="LogoBabouche" id="logo2"/>
+                <div class="footer-rs">
+                    <a href="#"><img src="/assets/icon/FbWhite.svg" alt="Fb" id=""/></a>
+                    <a href="#"><img src="/assets/icon/InstaWhite.svg" alt="Insta" id=""/></a>
+                    <a href="#"><img src="/assets/icon/TwitterW.svg" alt="Twitter" id=""/></a>
+                </div>    
+            </div>
+
+            <div class="footer-heading footer-1">
+                <h2>Infos</h2>
+                <a href="#">Mon compte</a>
+                <a href="#">Aides & Infos</a>
+                <a href="#">Conditions d’utilisation </a>
+                <a href="#">Mentions Légales</a>
+                <a href="#">RGPD</a>
+            </div>
+            <div class="footer-heading footer-2">
+                <h2>Contact</h2>
+                <a href="#">Gabriel Akil</a>
+                <a href="#">Noah Dahan</a>
+                <a href="#">Alexandre Bellamy</a>
+                <a href="#">Dany Leguy</a>
+                <a href="#">Evan Thomas</a>
+            </div>
+            <div class="footer-heading footer-3">
+                <h2>Chercher</h2>
+                <a href="#">Rechercher</a>
+                <a href="#">Sneakers Femme</a>
+                <a href="#">Sneakers Homme</a>
+                <a href="#">Prochaines Sorties</a>
+            </div>
+        </div>
+    </div>
+
 </main>
 </body>
