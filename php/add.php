@@ -57,7 +57,15 @@
 
 ?>
 
-<html><head></head><body>
+<html>
+<head>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBOOLRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<h1>Ajouter un produit :</h1>
 
 	<style>
 
@@ -92,6 +100,7 @@
 
 	</style>
 
+	<br>
 	<a href="listing.php">Retour</a>
 	<br><br>
 	
@@ -99,46 +108,60 @@
 
 
 		<label for="brand">Marque</label>
+		<br>
 		<input type="text" name="brand" id="brand">
 		<br>
 
 		<label for="name">Nom de la paire</label>
+		<br>
 		<input type="text" name="name" id="name">
 		<br>
 
 		<label for="size">Taille</label>
+		<br>
 		<input type="number" name="size" id="size">
 		<br>
 
 		<label for="price">Prix</label>
+		<br>
 		<input type="number" name="price" id="price">
 		<br>
 
 		<label for="n_available">Quantité disponible</label>
+		<br>
 		<input type="number" name="n_available" id="n_available">
 		<br>
 
 		<label for="SKU_code">Code SKU</label>
+		<br>
 		<input type="text" name="SKU_code" id="SKU_code">
 		<br>
 
 		<label for="desc">Description</label>
-		<input type="text" name="desc" id="desc">
+		<br>
+		<textarea name="desc" id="desc" rows="10" cols="30"></textarea>
 		<br>
 
+		<hr>
 		<label for="photo1">Photo 1</label>
+		<br>
 		<input type="file" name="photo1" id="photo1">
 		<br>
 
+		<hr>
 		<label for="photo2">Photo 2</label>
+		<br>
 		<input type="file" name="photo2" id="photo2">
 		<br>
 
+		
+		<hr>
 		<label for="photo3">Photo 3</label>
+		<br>
 		<input type="file" name="photo3" id="photo3">
 		<br>
 
-		<button>Ajouter</button>
+		<button class="btn btn-primary" type="button">Ajouter</button>
 
 	</form>
 
