@@ -15,6 +15,18 @@
 <?php
 require('connect.php');
 
+$sql ="SELECT * FROM `Images` WHERE `name` LIKE '%Connexion%'";
+$query= $db->prepare($sql);
+$query->execute();
+
+$img_connexion = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+
+
+
+
 if (isset($_REQUEST['username'], $_REQUEST['password'])){
 // Vérification, on voit  s'il y a un username, email ou password qui a été rentré dans le formulaire pour s'inscrire.
 
@@ -50,7 +62,7 @@ if (isset($_REQUEST['username'], $_REQUEST['password'])){
 ?>
 
 <section id=="inscription">
-<img src='<img src="data:image/jpeg;base64, '.base64_encode($content[0]['image']).'"/>
+	<?= '<img src="data:image/jpeg;base64,'.base64_encode($img_connexion[0]['image']).'"/>' ?>
 	<div> 
 		<h1>Inscription</h1>
 		<h1>Sinscrire</h1>
