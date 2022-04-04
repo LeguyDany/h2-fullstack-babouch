@@ -50,10 +50,10 @@ if (isset($_REQUEST['username'], $_REQUEST['password'])){
 ?>
 
 <section id=="inscription">
-	<img src="">
+<img src='<img src="data:image/jpeg;base64, '.base64_encode($content[0]['image']).'"/>
 	<div> 
 		<h1>Inscription</h1>
-		<h1>S'inscrire</h1>
+		<h1>Sinscrire</h1>
 
 
 		<form class="box" action="" method="post" name="register" >
